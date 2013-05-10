@@ -45,17 +45,6 @@ SERVER_EMAIL = EMAIL_HOST_USER
 ########## END EMAIL CONFIGURATION
 
 
-########## DATABASE CONFIGURATION
-DATABASES = {}
-########## END DATABASE CONFIGURATION
-
-
-########## CACHE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
-CACHES = {}
-########## END CACHE CONFIGURATION
-
-
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = get_env_setting('SECRET_KEY')
