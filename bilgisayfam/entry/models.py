@@ -1,6 +1,8 @@
 from django.db import models
 
 from djorm_pgarray.fields import ArrayField
+from djorm_hstore.fields import DictionaryField
+from djorm_hstore.models import HStoreManager
 
 from qhonuskan_votes.models import (VotesField, ObjectsWithScoresManager,
                                     SortByScoresManager)
@@ -20,8 +22,19 @@ class Entry(models.Model):
     """
 
     keyword = models.CharField(max_length=255, unique=True)
+    last_updated = DictionaryField()
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = HStoreManager()
+    """
+    HStoreManager is needed to be able to save HStore dictionaries using
+    entry.save().
+    """
+
+    def __unicode__(self):
+        return "%s %s" % (self.keyword, self.last_updated)
 
 
 class Dictionary(models.Model):
