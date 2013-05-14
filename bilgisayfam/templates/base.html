@@ -22,31 +22,33 @@
         then move to project.css -->
         {% block extra_css %}
         <style type="text/css">
-            #header.noentry-header { position:absolute; top:35%; left:50%; margin-top:-6em; margin-left:-30em; text-align:center; width:60em; height:4em;}
+            #header.noentry-header { position:absolute; top:35%; left:50%; margin-top:-6em; margin-left:-16em; text-align:center; width:32em; height:4em;}
             #header.entry-header {top: 5%; text-align: center; margin: 2em;}
             .content {width: 30em; margin: auto; font-size: 1.2em;}
             .content li {margin: 2em; line-height: 1.4; }
             .content h2 {text-align: center;}
-            .form-search input[type="text"] {width:15em; font-size:2em; height:1.05em; text-align: center;}
+            .form-search input[type="text"] {margin-bottom: 1em;}
             .form-search input[type="submit"] {margin: 1em auto; display: block; padding: 0.3em; width: 25em; font-size: 1.25em;}
-            .form-search label {display: block; font-size: 3em; font-weight: bold; margin: 1em;}
+            .form-search label {display: block; font-size: 3em; font-weight: bold; margin: 0.25em;}
             .meaning-tags {font-style: italic; font-size: 0.95em; margin-right: 0.5em;}
             .loading { background: url(http://127.0.0.1:8000/static/img/ajax-loader.gif) 50% 50% no-repeat; }
             [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak { display: none; }
+            .container {width: 36em;}
         </style>
         {% endblock extra_css %}
   </head>
 
-  <body class="container" ng-controller="ContentController">
+  <body ng-controller="ContentController">
+  <div class="container">
     <div id="header" class="{% if entry_dict %}entry-header{% else %}noentry-header{% endif %}">
       <form class="form-search" name="search" method="get" ng-submit="submit()">
         <label for="search-input">Bilgi Sayfam!</label>
-        <input class="input-medium search-query" type="text" name="keyword" id="search-input" ng-model="keyword">
-        <input type="submit" value="Ara">
+        <input type="text" id="search-input" class="input-large search-query text-center" name="keyword" ng-model="keyword" placeholder="kelime giriniz">
+        <button type="submit" id="search-button" class="btn btn-primary btn-large btn-block" data-loading-text="Getiriliyor...">Getir</button>
       </form>
     </div> <!-- /header -->
     {% verbatim %}
-    <div class="content" ng-cloak ng-class="loading">
+    <div class="content" ng-cloak>
         <h2>{{ entry.keyword }}</h2>
         <h2 ng-show="error">{{ error }}</h2>
         <ol>
@@ -70,6 +72,7 @@
         </ol>
     </div>
     {% endif %}
+  </div> <!-- /.container -->
 
     <!-- Le javascript
     ================================================== -->

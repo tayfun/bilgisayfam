@@ -3,8 +3,8 @@
 
 angular.module('bilgisayfam.controllers', []).
   controller('ContentController', ["$scope", "Entry", "$location", function($scope, Entry, $location) {
-        $scope.entry = null;
         $scope.submit = function() {
+            $scope.entry = null;
             if(!this.keyword){
                 return;
             }
@@ -14,13 +14,17 @@ angular.module('bilgisayfam.controllers', []).
             $scope.loading = "loading";
             $scope.error = "";
             var keyword = this.keyword;
+            var search_input = document.getElementById("search-input");
+            var search_button = $("#search-button");
             $scope.entry = Entry.get({keyword: this.keyword}, function(){
-                $scope.loading = "";
-            },
-            function(response){
-                $scope.loading = "";
-                $scope.error = keyword + " kelimesi bulunamadı.";
+                    search_button.button("reset");
+                },
+                function(response){
+                    search_button.button("reset");
+                    $scope.error = keyword + " kelimesi bulunamadı.";
             });
+            search_input.placeholder = this.keyword;
+            search_button.button("loading");
             this.keyword = ""
         };
   }]);
