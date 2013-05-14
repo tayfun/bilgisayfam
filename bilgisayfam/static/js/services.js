@@ -1,9 +1,7 @@
 'use strict';
 
-/* Services */
 
-
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('bilgisayfam.services', []).
-  value('version', '0.1');
+angular.module('bilgisayfam.services', ["ngResource"]).
+  factory("Entry", ["$resource", function($resource){
+    return $resource("/?search=:keyword");
+}]);
