@@ -18,9 +18,11 @@ angular.module('bilgisayfam.controllers', []).
             var search_button = $("#search-button");
             $scope.entry = Entry.get({keyword: this.keyword}, function(){
                     search_button.button("reset");
+                    search_input.blur();
                 },
                 function(response){
                     search_button.button("reset");
+                    search_input.blur();
                     $scope.error = keyword + " kelimesi bulunamadı.";
             });
             search_input.placeholder = this.keyword;

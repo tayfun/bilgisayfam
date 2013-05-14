@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}bilgisayfam{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="internetteki en iyi sozluk!">
     <meta name="author" content="tayfun sen">
 
@@ -48,7 +48,7 @@
       </form>
     </div> <!-- /header -->
     {% verbatim %}
-    <div class="content" ng-cloak>
+    <div class="content" id="ng-content" ng-cloak>
         <h2>{{ entry.keyword }}</h2>
         <h2 ng-show="error">{{ error }}</h2>
         <ol>
