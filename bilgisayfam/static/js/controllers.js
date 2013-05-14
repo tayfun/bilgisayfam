@@ -2,12 +2,13 @@
 
 
 angular.module('bilgisayfam.controllers', []).
-  controller('ContentController', ["$scope", "Entry", function($scope, Entry) {
+  controller('ContentController', ["$scope", "Entry", "$location", function($scope, Entry, $location) {
         $scope.entry = null;
         $scope.submit = function() {
             if(!this.keyword){
                 return;
             }
+            $location.search({search: this.keyword});
             $('#header').removeClass("noentry-header").addClass("entry-header");
             $("#seo-content").hide();
             $scope.loading = "loading";
