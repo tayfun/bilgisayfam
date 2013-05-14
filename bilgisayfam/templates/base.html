@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}bilgisayfam{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,">
     <meta name="description" content="internetteki en iyi sozluk!">
     <meta name="author" content="tayfun sen">
 
@@ -22,8 +22,8 @@
         then move to project.css -->
         {% block extra_css %}
         <style type="text/css">
-            #header.noentry-header { position:absolute; top:35%; left:50%; margin-top:-6em; margin-left:-16em; text-align:center; width:32em; height:4em;}
-            #header.entry-header {top: 5%; text-align: center; margin: 2em;}
+            #header.noentry-header { position:absolute; top:20%; width:32em;}
+            #header {top: 5%; text-align: center; margin: 2em;}
             .content {width: 30em; margin: auto; font-size: 1.2em;}
             .content li {margin: 2em; line-height: 1.4; }
             .content h2 {text-align: center;}
