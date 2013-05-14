@@ -39,14 +39,14 @@
   </head>
 
   <body class="container" ng-controller="ContentController">
-    {% verbatim %}
-    <div id="header" ng-class="header_class" class="noentry-header">
+    <div id="header" class="{% if entry_dict %}entry-header{% else %}noentry-header{% endif %}">
       <form class="form-search" name="search" method="get" ng-submit="submit()">
         <label for="search-input">Bilgi Sayfam!</label>
         <input class="input-medium search-query" type="text" name="keyword" id="search-input" ng-model="keyword">
         <input type="submit" value="Ara">
       </form>
     </div> <!-- /header -->
+    {% verbatim %}
     <div class="content" ng-cloak ng-class="loading">
         <h2>{{ entry.keyword }}</h2>
         <h2 ng-show="error">{{ error }}</h2>
@@ -58,6 +58,19 @@
         </ol>
     </div>
     {% endverbatim %}
+    {% if entry_dict %}
+    <div class="content" id="seo-content">
+        <h2>{{ entry_dict.keyword }}</h2>
+        <ol>
+            {% for meaning in entry_dict.meaning %}
+            <li>
+                {% if meaning.tags %}<span class="meaning-tags">{{ meaning.tags|join:", " }}</span>{% endif %}
+                <span class="meaning-content">{{ meaning.content }}</span>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+    {% endif %}
 
     <!-- Le javascript
     ================================================== -->
@@ -72,13 +85,6 @@
     <script src="{{ STATIC_URL }}js/controllers.js"></script>
     <script src="{{ STATIC_URL }}js/filters.js"></script>
     <script src="{{ STATIC_URL }}js/directives.js"></script>
-        <script>
-            var bilgisayfam = {};
-    {% if search_result %}
-            bilgisayfam.entry = {{ search_result|safe }}
-    {% endif %}
-        </script>
-
     {% block extra_js %}{% endblock extra_js %}
   </body>
 </html>

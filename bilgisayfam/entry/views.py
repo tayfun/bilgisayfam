@@ -27,7 +27,7 @@ def find_meaning(keyword):
         except IndexError:
             Entry.objects.create(keyword=keyword)
             return None
-        return json.dumps(tdk_meaning)
+        return tdk_meaning
 
     # Entry exists, so presumably we have made a round trip to TDK to get
     # meaning. We'll see if meaning exists in the DB.
@@ -54,7 +54,7 @@ def find_meaning(keyword):
     if result:
         entry_dict = model_to_dict(entry, ["keyword", "extra_info", "tags"])
         entry_dict['meaning'] = result
-        return json.dumps(entry_dict)
+        return entry_dict
     else:
         return None
 
@@ -72,14 +72,16 @@ def index_view(request):
         return render(request, "base.html")
 
     cache_key = get_json_cache_key(keyword)
-    json_meaning = cache.get(get_json_cache_key(keyword))
-    if not json_meaning:
-        json_meaning = find_meaning(keyword)
-        if not json_meaning:
+    entry_dict = cache.get(cache_key)
+    if not entry_dict:
+        entry_dict = find_meaning(keyword)
+        if not entry_dict:
             # can't get it from TDK as well. Return 404.
+            # TODO: Create a generic 404 page including search keywords.
             raise Http404
-        cache.set(cache_key, json_meaning)
+        cache.set(cache_key, entry_dict)
 
     if request.is_ajax():
-        return HttpResponse(json_meaning, mimetype='application/json')
-    return render(request, "base.html", {"search_result": json_meaning})
+        return HttpResponse(json.dumps(entry_dict),
+                            content_type='application/json')
+    return render(request, "base.html", {"entry_dict": entry_dict})
