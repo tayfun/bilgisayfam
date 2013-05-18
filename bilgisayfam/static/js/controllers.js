@@ -2,31 +2,51 @@
 
 
 angular.module('bilgisayfam.controllers', []).
-  controller('ContentController', ["$scope", "Entry", "$location", function($scope, Entry, $location) {
+    controller('ContentController', ["$scope", "Entry", "$location", function($scope, Entry, $location) {
+        $scope.cache = $scope.entry = {};
+        $scope.$watch(function() {return $location.search();}, function(newSearch, oldSearch) {
+            if (typeof(newSearch) == "undefined") {
+                // if there are no search parameters, do nothing.
+                return;
+            }
+            var search_keyword = newSearch["search"];
+            if (newSearch === oldSearch) {
+                // this is the initialization run, just cache the result.
+                $scope.cache[search_keyword] = bilgisayfam.seo_entry;
+                return;
+            }
+            var cached_entry = $scope.cache[search_keyword];
+            if (typeof(cached_entry) != "undefined") {
+                $scope.entry = cached_entry;
+                afterEntryFunction(search_keyword);
+            }
+        });
+        var search_input = document.getElementById("search-input");
+        var afterEntryFunction = function(keyword) {
+            // Run after entry is loaded.
+            $scope.keyword = "";
+            search_input.blur();
+            search_input.placeholder = keyword;
+        };
         $scope.submit = function() {
-            $scope.entry = null;
             if(!this.keyword){
                 return;
             }
             $location.search({search: this.keyword});
             $('#header').removeClass("noentry-header").addClass("entry-header");
             $("#seo-content").hide();
-            $scope.loading = "loading";
-            $scope.error = "";
+            // keyword is copied from /this/ so that a closure is formed for Entry.get
             var keyword = this.keyword;
-            var search_input = document.getElementById("search-input");
             var search_button = $("#search-button");
-            $scope.entry = Entry.get({keyword: this.keyword}, function(){
+            $scope.entry = Entry.get({keyword: keyword}, function(){
                     search_button.button("reset");
-                    search_input.blur();
+                    $scope.cache[keyword] = $scope.entry;
                 },
                 function(response){
                     search_button.button("reset");
-                    search_input.blur();
-                    $scope.error = keyword + " kelimesi bulunamadı.";
+                    $scope.entry.error = keyword + " kelimesi bulunamadı.";
             });
-            search_input.placeholder = this.keyword;
             search_button.button("loading");
-            this.keyword = ""
+            afterEntryFunction(keyword);
         };
   }]);

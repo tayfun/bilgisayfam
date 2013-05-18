@@ -1,3 +1,4 @@
+{% load jsonify %}
 <!DOCTYPE html>
 <html lang="tr" ng-app="bilgisayfam">
   <head>
@@ -50,7 +51,7 @@
     {% verbatim %}
     <div class="content" id="ng-content" ng-cloak>
         <h2>{{ entry.keyword }}</h2>
-        <h2 ng-show="error">{{ error }}</h2>
+        <h2 ng-show="entry.error">{{ entry.error }}</h2>
         <ol>
             <li ng-repeat="meaning in entry.meaning">
                 <span class="meaning-tags" ng-show="meaning.tags">{{ meaning.tags.join(", ") }}</span>
@@ -87,6 +88,7 @@
     <script src="{{ STATIC_URL }}js/controllers.js"></script>
     <script src="{{ STATIC_URL }}js/filters.js"></script>
     <script src="{{ STATIC_URL }}js/directives.js"></script>
+    {% if entry_dict %}<script>bilgisayfam.seo_entry = {{ entry_dict|jsonify }}</script>{% endif %}
     {% block extra_js %}{% endblock extra_js %}
   </body>
 </html>

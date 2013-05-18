@@ -7,3 +7,6 @@ angular.module('bilgisayfam', ['bilgisayfam.filters', 'bilgisayfam.services', 'b
     $locationProvider.html5Mode(true).hashPrefix("!");
   }
 );
+
+// Also define our own namespace.
+var bilgisayfam = {};
