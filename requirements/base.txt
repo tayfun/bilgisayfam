@@ -6,3 +6,4 @@
 requests
 extensions
 python-dateutil
+psycopg2
