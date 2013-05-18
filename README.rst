@@ -25,9 +25,9 @@ Ayarlamalar
 
 PostgreSQL kurulumunu yaptıktan sonra veritabanı ekleyip gerekli kullanıcıyı yaratmanız gerekmektedir. Eğer veritabanınız web sunucunuz ile aynı makine ise varsayılan olarak "ident sameuser" kullanılacağı için sisteme giriş kullanıcı adınız ile bir superuser yarattığınızda tüm veritabanlarına şifresiz giriş yapabilecektir:
 
-    $ sudo -u postgres createuser --superuser $USER
-    $ sudo -u postgres psql
-    postgres=# create database bilgisayfam;
+    $ sudo -u postgres createuser --superuser $USER  
+    $ sudo -u postgres psql  
+    postgres=# create database bilgisayfam;  
 
 Bu adımlardan sonra sistem kullanıcı adınızla aynı bir veritabanı kullanıcınız yaratılmış olacak ve yarattığınız bilgisayfam veritabanına şifresiz bağlanabilecektir (`pg_hba.conf` dosyasında "ident" olduğu sürece). Django settings dosyalarında başka bir değişiklik yapmanıza gerek yoktur.
 
