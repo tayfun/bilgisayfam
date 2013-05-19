@@ -49,3 +49,8 @@ SERVER_EMAIL = EMAIL_HOST_USER
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = get_env_setting('SECRET_KEY')
 ########## END SECRET CONFIGURATION
+
+ALLOWED_HOSTS = [
+    "*.bilgisayfam.com",
+    "127.0.0.1"
+]
