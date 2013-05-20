@@ -48,6 +48,7 @@ def get_meaning(keyword):
                             unicode(td_tag.string).split(','))
             except AttributeError:
                 content += unicode(td_tag.string)
+        # Does not work when content is "2. 0,00156 gram olan" (zerre).
         content = content.strip().lstrip("0123456789. ")
         meaning = Meaning.objects.create(entry=entry, tags=meaning_tags,
             content=content.strip())
