@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 import requests
 
@@ -16,6 +17,12 @@ def get_meaning(keyword):
     response = requests.post(
         "http://www.tdk.gov.tr/index.php?option=com_gts&arama=gts",
         data=form_fields)
+    # TDK does not give 404 as response status but it does have specific
+    # keywords which tell us the word could not be found.
+    if u"sözü bulunamadı" in response.text:
+        # Add an entry for this keyword.
+        Entry.objects.create(keyword=keyword)
+        return None
     soup = BeautifulSoup(response.text)
     table_tag = soup.select("#hor-minimalist-a")[0]
     meta_data_list = table_tag.select("thead i")[0].contents

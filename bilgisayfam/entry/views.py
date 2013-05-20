@@ -24,10 +24,10 @@ def find_meaning(keyword):
         # This should add an Entry (it will also add meaning if it exists).
         try:
             tdk_meaning = get_meaning(keyword)
+            return tdk_meaning
         except IndexError:
-            Entry.objects.create(keyword=keyword)
+            # There was an error in parsing TDK. DB error on their side.
             return None
-        return tdk_meaning
 
     # Entry exists, so presumably we have made a round trip to TDK to get
     # meaning. We'll see if meaning exists in the DB.

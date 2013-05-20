@@ -22,7 +22,7 @@ class Entry(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return "%s %s" % (self.keyword, self.last_updated)
+        return "%s" % self.keyword
 
 
 class Meaning(models.Model):
