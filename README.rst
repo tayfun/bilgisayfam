@@ -36,3 +36,32 @@ Bu adımlardan sonra sistem kullanıcı adınızla aynı bir veritabanı kullan�
 Siteyi canlıda çalıştırmayı düşünüyorsanız gerekli olan `SECRET_KEY` değerini değiştirmenizi öneririm. Zaten canlı için olan settings/production.py dosyasında bu değer ortam değişkeni olarak alınmakta, yoksa hata vermektedir. Örnek olarak virtualenv içerisindeki bin/postactivate dosyasına aşağıdaki kod parçası ile yarattığınız değeri ekleyebilirsiniz:
 
     $ python -c "chars = 'abcdefghijklmnopqrstuvwxyz0123456789\!@#\$%^&*(-_=+)'; from django.utils.crypto import get_random_string; print get_random_string(50, chars);"
+
+
+===========
+Veritabanı
+===========
+
+Sözlüğün ilk sürümlerinde [v0.2 örneğin](https://github.com/tayfun/bilgisayfam/tree/0.2) anlık olarak TDK web sitesine bağlanıp veri çekiliyor ve yerel veritabanına ekleniyordu. Ancak bunun bazı sorunlar çıkardığını gördüm. Öncelikle TDK'nin kararlı çalışmadığını (birkaç kez MySQL bağlantı hatası aldım) ve
+bazen çok uzun süre beklettiğini farkettim. Her kelime için sadece bir kez TDK'ye gitsem de bu kabul edilebilir değildi. Tüm veritabanının anında elimde olmamasının bir eksisi de bazı işlemleri hızlı yapamamam oldu (örneğin otomatik tamamlama gibi). 
+
+Bu yüzden (Scrapy)[http://doc.scrapy.org/en/latest/index.html] ile tüm veritabanı çekme işine giriştim. Scrapy scriptlerini tdk_crawler dizininde bulabilirsiniz. İki tane örümcek var, bir tanesi ilk olarak kelimeleri çekerken ikincisi anlamları veritabanına ekliyor. Kelime listesini çekmek için:
+
+::
+
+    $ scrapy crawl keyword
+
+Tek bir kelimenin anlamını bulmak için:
+
+::
+
+    $ scrapy crawl meaning -a keyword=kamyon
+
+ve veritabanındaki tüm kelimelerin anlamlarını çekmek için:
+
+::
+
+    $ scrapy crawl meaning
+
+kullanılabilir. Bu komutları tdk_crawler dizininde çalıştırmanız gerekmektedir. Veritabanına yazılırken tdk_crawler/tdk_crawler/settings.py dosyasında yazdığı üzere bilgisayfam django projesindeki scrapy.py dosyasını kullanıyorum. scrapy.py dosyasında bulunan veritabanına veriler yazılacaktır. Veritabanına yazılırken Django ORM'yi kullandığım için PYTHONPATH içerisinde bilgisayfam projesinin de yer aldığına dikkat edin.
+
