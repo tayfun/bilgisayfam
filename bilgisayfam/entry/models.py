@@ -17,6 +17,7 @@ class Entry(models.Model):
     """
 
     keyword = models.CharField(max_length=255, unique=True)
+    normalized = models.CharField(max_length=255, db_index=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -35,6 +36,11 @@ class Meaning(models.Model):
     content = models.TextField()
     """
     This is the content of the meaning.
+    """
+
+    example = models.TextField()
+    """
+    This is an example sentence.
     """
 
     entry = models.ForeignKey(Entry)

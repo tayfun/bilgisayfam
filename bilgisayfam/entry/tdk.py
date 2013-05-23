@@ -26,6 +26,8 @@ def get_meaning(keyword):
     soup = BeautifulSoup(response.text)
     table_tag = soup.select("#hor-minimalist-a")[0]
     meta_data_list = table_tag.select("thead i")[0].contents
+    # keyword as returned from TDK web site.
+    keyword = table_tag.select("thead > tr > th > b")[0].string.strip()
 
     entry_tags = list()
     extra_info = list()

@@ -67,6 +67,8 @@ def index_view(request):
     try:
         # REQUEST has GET and POST parameters.
         keyword = request.REQUEST["search"]
+        # we'll search in lowercase.
+        keyword = keyword.lower()
     except KeyError:
         # if there's no search keyword, show base page.
         return render(request, "base.html")
