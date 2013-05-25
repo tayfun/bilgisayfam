@@ -46,7 +46,11 @@ class MeaningSpider(BaseSpider):
                 "thead/tr/th/b//text()").extract()).split("(")[0].strip()
 
             if not entry:
-                entry = Entry.objects.get(keyword=keyword)
+                try:
+                    entry = Entry.objects.get(keyword=keyword)
+                except Entry.DoesNotExist:
+                    entry = Entry.objects.get(normalized=normalize(keyword))
+                    entry.keyword = keyword
 
             tags = "".join(meaning_tr.select(
                 "thead/tr/th/i/b//text()").extract()).strip()
