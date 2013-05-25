@@ -22,4 +22,16 @@ translate_table = {
 
 
 def normalize(s):
+    """
+    Transforms a unicode string so that it can be searched and found even when
+    it is not exactly the same. So for example a user can search for "Oğlak"
+    and we can find "oğlak" by normalizing both to "oglak".
+
+    Lowercases all the letters and anglicanizes it.
+
+    Oğlak  => oglak
+    başucu => basucu
+    Noel Baba => noel baba
+    """
+    s = s.lower()
     return s.translate(translate_table)
