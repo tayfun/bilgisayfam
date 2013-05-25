@@ -30,8 +30,9 @@ class MeaningSpider(BaseSpider):
         return self.search_url % params_encoded
 
     def start_requests(self):
-        for entry in Entry.objects.all().order_by("id"):
-            yield Request(self.__create_url__(entry.keyword), self.parse)
+        for keyword in Entry.objects.filter(meaning__isnull=True).order_by(
+                "id").values_list("keyword"):
+            yield Request(self.__create_url__(keyword), self.parse)
 
     def parse(self, response):
         hxs = HtmlXPathSelector(response)
