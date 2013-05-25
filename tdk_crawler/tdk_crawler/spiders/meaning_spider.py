@@ -31,7 +31,7 @@ class MeaningSpider(BaseSpider):
 
     def start_requests(self):
         for keyword in Entry.objects.filter(meaning__isnull=True).order_by(
-                "id").values_list("keyword"):
+                "id").values_list("keyword", flat=True):
             yield Request(self.__create_url__(keyword), self.parse)
 
     def parse(self, response):
