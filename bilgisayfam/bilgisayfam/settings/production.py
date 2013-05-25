@@ -51,6 +51,6 @@ SECRET_KEY = get_env_setting('SECRET_KEY')
 ########## END SECRET CONFIGURATION
 
 ALLOWED_HOSTS = [
-    "*.bilgisayfam.com",
+    "sozluk.bilgisayfam.com",
     "127.0.0.1"
 ]
