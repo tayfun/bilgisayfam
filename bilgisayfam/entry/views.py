@@ -7,8 +7,9 @@ from django.http import HttpResponse
 from django.http import Http404
 from django.shortcuts import render
 
-from entry.utils import get_json_cache_key
+from entry.helpers import get_json_cache_key
 from entry.models import Entry
+from utils.encoding import normalize
 
 
 def find_meaning(keyword):
@@ -17,20 +18,13 @@ def find_meaning(keyword):
     the dictionary specified.
     """
     try:
-        # Check if related entry is in DB.
         entry = Entry.objects.get(keyword=keyword)
     except Entry.DoesNotExist:
-        from entry.tdk import get_meaning
-        # This should add an Entry (it will also add meaning if it exists).
         try:
-            tdk_meaning = get_meaning(keyword)
-            return tdk_meaning
+            entry = Entry.objects.filter(normalized=normalize(keyword))[0]
         except IndexError:
-            # There was an error in parsing TDK. DB error on their side.
-            return None
+            raise Http404
 
-    # Entry exists, so presumably we have made a round trip to TDK to get
-    # meaning. We'll see if meaning exists in the DB.
     cursor = connection.cursor()
 
     """
@@ -67,8 +61,6 @@ def index_view(request):
     try:
         # REQUEST has GET and POST parameters.
         keyword = request.REQUEST["search"]
-        # we'll search in lowercase.
-        keyword = keyword.lower()
     except KeyError:
         # if there's no search keyword, show base page.
         return render(request, "base.html")
