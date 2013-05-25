@@ -1,10 +1,4 @@
 # using Django edge.
 -e git://github.com/django/django.git#egg=django
 -e git://github.com/niwibe/djorm-ext-pgarray.git#egg=djorm_pgarray
--e git://github.com/niwibe/djorm-ext-hstore.git#egg=djorm_hstore
--e git://github.com/linkfloyd/qhonuskan-votes.git#egg=qhonuskan_votes
-requests
-extensions
-python-dateutil
 psycopg2
-beautifulsoup4
