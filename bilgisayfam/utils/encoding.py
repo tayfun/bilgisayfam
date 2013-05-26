@@ -29,9 +29,9 @@ def normalize(s):
 
     Lowercases all the letters and anglicanizes it.
 
-    Oğlak  => oglak
-    başucu => basucu
-    Noel Baba => noel baba
+    u"Oğlak"     => oglak
+    u"başucu"    => basucu
+    u"Noel Baba" => noel baba
     """
     s = s.lower()
     return s.translate(translate_table)
