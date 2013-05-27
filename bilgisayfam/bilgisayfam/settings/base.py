@@ -4,6 +4,8 @@
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
+from pipeline import *
+
 
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
@@ -202,6 +204,7 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     # Database migration helpers:
     # 'south',
+    'pipeline',
 )
 
 # Apps specific for this project go here.

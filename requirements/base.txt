@@ -2,3 +2,4 @@
 -e git://github.com/django/django.git#egg=django
 -e git://github.com/niwibe/djorm-ext-pgarray.git#egg=djorm_pgarray
 psycopg2
+-e git://github.com/cyberdelia/django-pipeline.git#egg=pipeline

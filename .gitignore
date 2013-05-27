@@ -16,3 +16,6 @@ build
 
 # Logs:
 *.log
+
+# assets dir is where staticfiles are collected.
+assets
