@@ -67,6 +67,22 @@ ve veritabanındaki tüm kelimelerin anlamlarını çekmek için:
 
 kullanılabilir. Bu komutları tdk_crawler dizininde çalıştırmanız gerekmektedir. Veritabanına yazılırken tdk_crawler/tdk_crawler/settings.py dosyasında yazdığı üzere bilgisayfam django projesindeki scrapy.py dosyasını kullanıyorum. scrapy.py dosyasında bulunan veritabanına veriler yazılacaktır. Veritabanına yazılırken Django ORM'yi kullandığım için PYTHONPATH içerisinde bilgisayfam projesinin de yer aldığına dikkat edin.
 
+=============
+Gereklilikler
+=============
+
+Gerekliliklerin büyük çoğunluğu requirements dosyalarında bulunmaktadır. Kurulum için:
+
+::
+
+    $ pip install -r requirement.txt
+
+Bazı gereklilikler ise pip ile kurulamamakta. Bunları elinizle kurmalısınız. Örneğin, js ve css dosyalarını sıkıştırmak istiyorsanız yuglify gerekiyor. Bunu npm ile kurabilirsiniz:
+
+::
+
+    $ sudo npm -g install yuglify
+
 ========
 Katkılar
 ========

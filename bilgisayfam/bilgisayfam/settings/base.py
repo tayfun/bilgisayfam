@@ -255,3 +255,6 @@ LOGGING = {
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'wsgi.application'
 ########## END WSGI CONFIGURATION
+
+# This came in Django 1.6. As I don't use pgbouncer, this will be helpful.
+CONN_MAX_AGE = 600
