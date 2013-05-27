@@ -29,7 +29,7 @@
     <div id="header" class="{% if entry_dict %}entry-header{% else %}noentry-header{% endif %}">
       <form class="form-search" name="search" method="get" ng-submit="submit()">
         <label for="search-input">Bilgi Sayfam!</label>
-        <input type="text" id="search-input" class="input-large search-query text-center" name="keyword" ng-model="keyword" placeholder="kelime giriniz">
+        <input type="text" id="search-input" class="input-large search-query text-center" name="search" ng-model="keyword" placeholder="kelime giriniz">
         <button type="submit" id="search-button" class="btn btn-primary btn-large btn-block" data-loading-text="Getiriliyor...">Getir</button>
       </form>
     </div> <!-- /header -->
@@ -73,8 +73,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
     <script src="//code.angularjs.org/1.0.6/angular-resource.min.js"></script>
     {% compressed_js 'mainjs' %}
-    {% if entry_dict %}<script>bilgisayfam.seo_entry = {{ entry_dict|jsonify }}</script>{% endif %}
-    {% block extra_js %}{% endblock extra_js %}
+    <script>var bilgisayfam = {}; {% if entry_dict %}bilgisayfam.seo_entry = {{ entry_dict|jsonify }}{% endif %}</script>
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
