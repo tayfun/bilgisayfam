@@ -65,3 +65,8 @@ ve veritabanındaki tüm kelimelerin anlamlarını çekmek için:
 
 kullanılabilir. Bu komutları tdk_crawler dizininde çalıştırmanız gerekmektedir. Veritabanına yazılırken tdk_crawler/tdk_crawler/settings.py dosyasında yazdığı üzere bilgisayfam django projesindeki scrapy.py dosyasını kullanıyorum. scrapy.py dosyasında bulunan veritabanına veriler yazılacaktır. Veritabanına yazılırken Django ORM'yi kullandığım için PYTHONPATH içerisinde bilgisayfam projesinin de yer aldığına dikkat edin.
 
+========
+Katkılar
+========
+
+GPL lisansı ile kullandığım sözlük ikonu için [Alessandro Rei](http://kde-look.org/usermanager/search.php?username=mentalrey)'ye teşekkürler.
