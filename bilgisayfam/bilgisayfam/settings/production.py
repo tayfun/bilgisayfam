@@ -54,3 +54,5 @@ ALLOWED_HOSTS = [
     "sozluk.bilgisayfam.com",
     "127.0.0.1"
 ]
+
+DEBUG = False
