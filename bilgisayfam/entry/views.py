@@ -34,7 +34,7 @@ def find_meaning(keyword):
     cursor.execute("SELECT array_to_json(array_agg(row_to_json(t1))) "
         "FROM ("
             "SELECT m.id, m.tags, content FROM entry_meaning as m "
-            "WHERE m.entry_id=%s) t1", [entry.id])
+            "WHERE m.entry_id=%s ORDER BY id ASC) t1", [entry.id])
     """
     Meaning is a dict like:
 

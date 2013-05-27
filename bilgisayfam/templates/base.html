@@ -31,18 +31,22 @@
         then move to project.css -->
         {% block extra_css %}
         <style type="text/css">
-            #header.noentry-header { position:absolute; top:20%; width:32em;}
-            #header {top: 5%; text-align: center; margin: 2em;}
-            .content {width: 30em; margin: auto; font-size: 1.2em;}
+            #header.noentry-header { position:absolute; top:20%; width:25em;}
+            #header {top: 5%; text-align: center;}
+            .content {margin: auto; font-size: 1.2em;}
             .content li {margin: 2em; line-height: 1.4; }
             .content h2 {text-align: center;}
             .form-search input[type="text"] {margin-bottom: 1em;}
-            .form-search input[type="submit"] {margin: 1em auto; display: block; padding: 0.3em; width: 25em; font-size: 1.25em;}
             .form-search label {display: block; font-size: 3em; font-weight: bold; margin: 0.25em;}
             .meaning-tags {font-style: italic; font-size: 0.95em; margin-right: 0.5em;}
             .loading { background: url(static/img/ajax-loader.gif) 50% 50% no-repeat; }
             [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak { display: none; }
-            .container {width: 36em;}
+            .container {width: 25em;}
+            ol {margin: 0;}
+            .entry-properties {font-size: 90%; text-align: center; color: blue; border-bottom: 1px black solid; padding-bottom: 5px;}
+            .tags {font-style: italic;}
+            .extra-info {font-weight: bold;}
+            .keyword {font-family:Garamond, Georgia, serif; font-size: 3em;}
         </style>
         {% endblock extra_css %}
   </head>
@@ -57,8 +61,12 @@
       </form>
     </div> <!-- /header -->
     {% verbatim %}
-    <div class="content" id="ng-content" ng-cloak>
-        <h2>{{ entry.keyword }}</h2>
+    <div class="content" id="ng-content" ng-cloak ng-show="entry.keyword || entry.error">
+        <h2 class="keyword">{{ entry.keyword }}</h2>
+        <div class="entry-properties">
+          <span class="tags">{{ entry.tags.join(", ") }}</span><span ng-show="entry.tags && entry.extra_info">, </span>
+          <span class="extra-info">{{ entry.extra_info.join(", ") }}</span>
+        </div>
         <h2 ng-show="entry.error">{{ entry.error }}</h2>
         <ol>
             <li ng-repeat="meaning in entry.meaning">
@@ -70,7 +78,11 @@
     {% endverbatim %}
     {% if entry_dict %}
     <div class="content" id="seo-content">
-        <h2>{{ entry_dict.keyword }}</h2>
+        <h2 class="keyword">{{ entry_dict.keyword }}</h2>
+        <div class="entry-properties">
+          {% if entry_dict.tags %}<span class="tags">{{ entry_dict.tags|join:", " }}</span>{% if entry_dict.tags and entry_dict.extra_info %}<span>, </span>{% endif %}{% endif %}
+          {% if entry_dict.extra_info %}<span class="extra-info">{{ entry_dict.extra_info|join:", " }}</span>{% endif %}
+        </div>
         <ol>
             {% for meaning in entry_dict.meaning %}
             <li>
