@@ -4,7 +4,9 @@ Bilgi Sayfam Projesi
 
 BilgiSayfam.com adresinin açık kaynak kodu bu git reposunda bulunmaktadır. Temel olarak Django ve arkadaşları (PostgreSQL, Redis, vs.) ve önyüz için de AngularJS kullanılmıştır. 
 
-Proje yapısında [Two Scoops of Django](https://django.2scoops.org/) kitabı örnek alınmıştır, bu vesileyle bu harika kitabı önermekteyim.
+Proje yapısında `Two Scoops of Django <https://django.2scoops.org/>`_ kitabı örnek alınmıştır, bu vesileyle bu harika kitabı önermekteyim.
+
+
 
 
 =======
@@ -42,10 +44,10 @@ Siteyi canlıda çalıştırmayı düşünüyorsanız gerekli olan `SECRET_KEY` 
 Veritabanı
 ===========
 
-Sözlüğün ilk sürümlerinde [v0.2 örneğin](https://github.com/tayfun/bilgisayfam/tree/0.2) anlık olarak TDK web sitesine bağlanıp veri çekiliyor ve yerel veritabanına ekleniyordu. Ancak bunun bazı sorunlar çıkardığını gördüm. Öncelikle TDK'nin kararlı çalışmadığını (birkaç kez MySQL bağlantı hatası aldım) ve
+Sözlüğün ilk sürümlerinde `v0.2 örneğin <https://github.com/tayfun/bilgisayfam/tree/0.2>`_ anlık olarak TDK web sitesine bağlanıp veri çekiliyor ve yerel veritabanına ekleniyordu. Ancak bunun bazı sorunlar çıkardığını gördüm. Öncelikle TDK'nin kararlı çalışmadığını (birkaç kez MySQL bağlantı hatası aldım) ve
 bazen çok uzun süre beklettiğini farkettim. Her kelime için sadece bir kez TDK'ye gitsem de bu kabul edilebilir değildi. Tüm veritabanının anında elimde olmamasının bir eksisi de bazı işlemleri hızlı yapamamam oldu (örneğin otomatik tamamlama gibi). 
 
-Bu yüzden (Scrapy)[http://doc.scrapy.org/en/latest/index.html] ile tüm veritabanı çekme işine giriştim. Scrapy scriptlerini tdk_crawler dizininde bulabilirsiniz. İki tane örümcek var, bir tanesi ilk olarak kelimeleri çekerken ikincisi anlamları veritabanına ekliyor. Kelime listesini çekmek için:
+Bu yüzden `Scrapy <http://doc.scrapy.org/en/latest/index.html>`_ ile tüm veritabanı çekme işine giriştim. Scrapy scriptlerini tdk_crawler dizininde bulabilirsiniz. İki tane örümcek var, bir tanesi ilk olarak kelimeleri çekerken ikincisi anlamları veritabanına ekliyor. Kelime listesini çekmek için:
 
 ::
 
@@ -69,4 +71,4 @@ kullanılabilir. Bu komutları tdk_crawler dizininde çalıştırmanız gerekmek
 Katkılar
 ========
 
-GPL lisansı ile kullandığım sözlük ikonu için [Alessandro Rei](http://kde-look.org/usermanager/search.php?username=mentalrey)'ye teşekkürler.
+GPL lisansı ile kullandığım sözlük ikonu için `Alessandro Rei <http://kde-look.org/usermanager/search.php?username=mentalrey>`_'ye teşekkürler.
