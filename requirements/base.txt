@@ -2,5 +2,8 @@
 -e git://github.com/django/django.git#egg=django
 -e git://github.com/niwibe/djorm-ext-pgarray.git#egg=djorm_pgarray
 psycopg2
--e git://github.com/cyberdelia/django-pipeline.git#egg=pipeline
+# uncomment below when pipeline cached files manifest bug is fixed.
+#-e git://github.com/cyberdelia/django-pipeline.git#egg=pipeline
+# instead of above, here's my branch including the fix:
+-e git://github.com/tayfun/django-pipeline.git@manifest_for_cached_files#egg=pipeline
 -e git://github.com/cyberdelia/manifesto.git#egg=manifesto
