@@ -205,6 +205,7 @@ THIRD_PARTY_APPS = (
     # Database migration helpers:
     # 'south',
     'pipeline',
+    'manifesto'
 )
 
 # Apps specific for this project go here.
