@@ -37,7 +37,7 @@
     <div id="header" class="{% if entry_dict %}entry-header{% else %}noentry-header{% endif %}">
       <form class="form-search" name="search" method="get" ng-submit="submit()">
         <label for="search-input">Bilgi Sayfam!</label>
-        <input type="text" id="search-input" class="input-large search-query text-center" name="search" ng-model="keyword" placeholder="kelime giriniz">
+        <input type="text" id="search-input" autocomplete required class="input-large search-query text-center" name="search" ng-model="keyword" placeholder="kelime giriniz">
         <button type="submit" id="search-button" class="btn btn-primary btn-large btn-block" data-loading-text="Getiriliyor...">Getir</button>
       </form>
     </div> <!-- /header -->
