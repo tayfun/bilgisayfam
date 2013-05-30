@@ -50,9 +50,4 @@ SERVER_EMAIL = EMAIL_HOST_USER
 SECRET_KEY = get_env_setting('SECRET_KEY')
 ########## END SECRET CONFIGURATION
 
-ALLOWED_HOSTS = [
-    "sozluk.bilgisayfam.com",
-    "127.0.0.1"
-]
-
 DEBUG = False

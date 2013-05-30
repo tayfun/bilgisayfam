@@ -1,6 +1,4 @@
-{% load jsonify %}
-{% load compressed %}
-<!DOCTYPE html>
+{% load jsonify %}{% load compressed %}<!DOCTYPE html>
 <html lang="tr" ng-app="bilgisayfam" manifest="{% url 'cache_manifest' %}">
   <head>
     <meta charset="utf-8">
@@ -11,12 +9,12 @@
     <meta name="author" content="tayfun sen">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <link rel="shortcut icon" href="{{ STATIC_URL }}/img/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}/img/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}/img/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}/img/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ STATIC_URL }}/img/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}/img/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}img/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}img/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}img/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ STATIC_URL }}img/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}img/apple-touch-icon.png" />
     {% compressed_css 'maincss' %}
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>

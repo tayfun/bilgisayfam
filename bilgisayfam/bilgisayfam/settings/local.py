@@ -37,3 +37,8 @@ MIDDLEWARE_CLASSES += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 ########## END TOOLBAR CONFIGURATION
+
+ALLOWED_HOSTS = [
+    "sozluk.bilgisayfam.com",
+    "127.0.0.1"
+]

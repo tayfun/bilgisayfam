@@ -17,3 +17,6 @@ PIPELINE_JS = {
 }
 
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+MANIFESTO_EXCLUDED_MANIFESTS = (
+        'pipeline.manifest.PipelineManifest',
+)
