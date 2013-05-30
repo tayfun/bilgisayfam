@@ -1,8 +1,6 @@
 """Development settings and globals."""
 
 
-from os.path import join, normpath
-
 from base import *
 
 
@@ -37,8 +35,3 @@ MIDDLEWARE_CLASSES += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 ########## END TOOLBAR CONFIGURATION
-
-ALLOWED_HOSTS = [
-    "sozluk.bilgisayfam.com",
-    "127.0.0.1"
-]

@@ -35,7 +35,7 @@ TEMPLATE_DEBUG = DEBUG
 ########## MANAGER CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
-    ('Your Name', 'your_email@example.com'),
+    ('Tayfun Sen', 'totayfun@gmail.com'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -259,3 +259,9 @@ WSGI_APPLICATION = 'wsgi.application'
 
 # This came in Django 1.6. As I don't use pgbouncer, this will be helpful.
 CONN_MAX_AGE = 600
+
+# Need to set this correctly otherwise a 400 Suspicious Operation is thrown.
+ALLOWED_HOSTS = [
+    "sozluk.bilgisayfam.com",
+    "127.0.0.1",
+]
