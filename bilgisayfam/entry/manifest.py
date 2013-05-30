@@ -12,6 +12,7 @@ class StaticManifest(Manifest):
     def network(self):
         return [
             # '*',
+            "/manifest.appcache",
         ]
 
     def fallback(self):

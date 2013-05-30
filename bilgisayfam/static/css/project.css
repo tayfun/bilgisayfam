@@ -77,3 +77,6 @@ ol {
     font-size: 3em;
 }
 
+.error {
+    color: red;
+}

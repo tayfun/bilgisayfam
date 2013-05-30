@@ -48,7 +48,7 @@
           <span class="tags">{{ entry.tags.join(", ") }}</span><span ng-show="entry.tags && entry.extra_info">, </span>
           <span class="extra-info">{{ entry.extra_info.join(", ") }}</span>
         </div>
-        <h2 ng-show="entry.error">{{ entry.error }}</h2>
+        <h2 ng-show="entry.error" class="error">{{ entry.error }}</h2>
         <ol>
             <li ng-repeat="meaning in entry.meaning">
                 <span class="meaning-tags" ng-show="meaning.tags">{{ meaning.tags.join(", ") }}</span>
