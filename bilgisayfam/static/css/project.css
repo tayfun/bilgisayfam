@@ -1,17 +1,12 @@
-#header.noentry-header {
-    position:absolute;
-    top:20%;
-    width:25em;
-}
-
 #header {
     top: 5%;
     text-align: center;
+    margin: 2em;
 }
 
 .content {
-    margin: auto;
     font-size: 1.2em;
+    margin: 2em;
 }
 
 .content li {
@@ -48,10 +43,6 @@
     display: none;
 }
 
-.container {
-    width: 25em;
-}
-
 ol {
     margin: 0;
 }
@@ -73,10 +64,22 @@ ol {
 }
 
 .keyword {
-    font-family:Garamond, Georgia, serif;
+    font-family: Garamond, Georgia, serif;
     font-size: 3em;
 }
 
 .error {
     color: red;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 35em;
+    }
+
+    #header.noentry-header {
+        width: 35em;
+        position:absolute;
+        top:20%;
+    }
 }
