@@ -38,7 +38,7 @@ class Meaning(models.Model):
     This is the content of the meaning.
     """
 
-    example = models.TextField()
+    example = models.TextField(null=True)
     """
     This is an example sentence.
     """
