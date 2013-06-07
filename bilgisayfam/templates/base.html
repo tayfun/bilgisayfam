@@ -51,6 +51,7 @@
             <li ng-repeat="meaning in entry.meaning">
                 <span class="meaning-tags" ng-show="meaning.tags">{{ meaning.tags.join(", ") }}</span>
                 <span class="meaning-content">{{ meaning.content }}</span>
+                <div class="meaning-example">{{ meaning.example }}</div>
             </li>
         </ol>
     </div>
@@ -67,6 +68,7 @@
             <li>
                 {% if meaning.tags %}<span class="meaning-tags">{{ meaning.tags|join:", " }}</span>{% endif %}
                 <span class="meaning-content">{{ meaning.content }}</span>
+                <div class="meaning-example">{{ meaning.example|default:"" }}</div>
             </li>
             {% endfor %}
         </ol>
