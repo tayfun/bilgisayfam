@@ -37,7 +37,7 @@ Bu adımlardan sonra sistem kullanıcı adınızla aynı bir veritabanı kullan�
 
 Siteyi canlıda çalıştırmayı düşünüyorsanız gerekli olan `SECRET_KEY` değerini değiştirmenizi öneririm. Zaten canlı için olan settings/production.py dosyasında bu değer ortam değişkeni olarak alınmakta, yoksa hata vermektedir. Örnek olarak virtualenv içerisindeki bin/postactivate dosyasına aşağıdaki kod parçası ile yarattığınız değeri ekleyebilirsiniz:
 
-    $ python -c "chars = 'abcdefghijklmnopqrstuvwxyz0123456789\!@#\$%^&*(-_=+)'; from django.utils.crypto import get_random_string; print get_random_string(50, chars);"
+    $ python -c "chars = 'abcdefghijklmnopqrstuvwxyz0123456789\\\!@#\$%^&*(-_=+)'; from django.utils.crypto import get_random_string; print get_random_string(50, chars);"
 
 
 ===========
